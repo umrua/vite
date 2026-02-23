@@ -5,38 +5,301 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Page Title */
+.app-title {
+  text-align: center;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Pokemon Card - Main display */
+.pokemon-card {
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px auto;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  text-align: center;
+  max-width: 350px;
+  color: #fff;
+}
+
+.pokemon-card.shiny {
+  border: 3px solid gold;
+  background-color: rgba(255, 249, 230, 0.25);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+}
+
+.pokemon-card.legendary {
+  border: 3px solid #a020f0;
+  background-color: rgba(160, 32, 240, 0.2);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(160, 32, 240, 0.6);
+}
+
+.pokemon-card.mythical {
+  border: 3px solid #ff1493;
+  background-color: rgba(255, 20, 147, 0.2);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(255, 20, 147, 0.6);
+}
+
+/* Special combined effect for Shiny + Legendary */
+.pokemon-card.shiny.legendary {
+  border: 3px solid;
+  border-image: linear-gradient(45deg, gold, #a020f0, gold) 1;
+  background-color: rgba(220, 160, 255, 0.25);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.7), 0 0 30px rgba(160, 32, 240, 0.7);
+  animation: rainbow-glow 3s ease-in-out infinite;
+}
+
+/* Special combined effect for Shiny + Mythical */
+.pokemon-card.shiny.mythical {
+  border: 3px solid;
+  border-image: linear-gradient(45deg, gold, #ff1493) 1;
+  background-color: rgba(255, 180, 220, 0.2);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.5), 0 0 25px rgba(255, 20, 147, 0.5);
+}
+
+@keyframes rainbow-glow {
+  0%, 100% {
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.7), 0 0 30px rgba(160, 32, 240, 0.7);
   }
-  to {
-    transform: rotate(360deg);
+  50% {
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.9), 0 0 40px rgba(160, 32, 240, 0.9);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.shiny-badge {
+  color: gold;
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-weight: bold;
 }
 
-.card {
-  padding: 2em;
+.legendary-badge {
+  color: #a020f0;
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(160, 32, 240, 0.8);
 }
 
-.read-the-docs {
-  color: #888;
+.mythical-badge {
+  color: #ff1493;
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(255, 20, 147, 0.8);
+}
+
+.shiny-legendary-badge {
+  font-size: 22px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  background: linear-gradient(45deg, gold, #a020f0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.shiny-mythical-badge {
+  font-size: 22px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  background: linear-gradient(45deg, gold, #ff1493);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.pokemon-sprite {
+  width: 150px;
+  height: 150px;
+  image-rendering: pixelated;
+}
+
+.pokemon-name {
+  text-transform: capitalize;
+  margin: 10px 0;
+  color: #fff;
+}
+
+.pokemon-id {
+  color: #e0e0e0;
+  font-size: 16px;
+}
+
+.pokemon-generation {
+  color: #e0e0e0;
+  font-size: 16px;
+}
+
+.pokemon-types {
+  margin-top: 15px;
+}
+
+.type-badge {
+  background-color: #4a90e2;
+  color: white;
+  padding: 6px 16px;
+  border-radius: 16px;
+  margin: 0 5px;
+  font-size: 14px;
+  text-transform: capitalize;
+  display: inline-block;
+}
+
+.pokemon-stats {
+  margin-top: 20px;
+  text-align: left;
+  padding: 0 20px;
+  color: #fff;
+}
+
+.pokemon-stats p {
+  margin: 8px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.pokemon-flavor-text {
+  margin-top: 20px;
+  padding: 15px 20px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #e0e0e0;
+  font-style: italic;
+}
+
+.pokemon-flavor-text p {
+  margin: 0;
+}
+
+.empty-message {
+  text-align: center;
+  color: #ddd;
+}
+
+/* History Items */
+.history-item {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  padding: 8px;
+  margin: 5px;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  text-align: center;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.history-item.shiny {
+  border: 2px solid gold;
+  background-color: rgba(255, 249, 230, 0.25);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.history-item.legendary {
+  border: 2px solid #a020f0;
+  background-color: rgba(160, 32, 240, 0.2);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 10px rgba(160, 32, 240, 0.5);
+}
+
+.history-item.mythical {
+  border: 2px solid #ff1493;
+  background-color: rgba(255, 20, 147, 0.2);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 10px rgba(255, 20, 147, 0.5);
+}
+
+.history-item.shiny.legendary {
+  border: 2px solid;
+  border-image: linear-gradient(45deg, gold, #a020f0, gold) 1;
+  background-color: rgba(220, 160, 255, 0.25);
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.6), 0 0 12px rgba(160, 32, 240, 0.6);
+}
+
+.history-item.shiny.mythical {
+  border: 2px solid;
+  border-image: linear-gradient(45deg, gold, #ff1493) 1;
+  background-color: rgba(255, 180, 220, 0.2);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.5), 0 0 10px rgba(255, 20, 147, 0.5);
+}
+
+.history-special-badge {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  font-size: 11px;
+}
+
+.history-sprite {
+  width: 60px;
+  height: 60px;
+  image-rendering: pixelated;
+}
+
+/* History Container */
+.history-container {
+  margin-top: 30px;
+  padding: 20px;
+}
+
+.history-title {
+  text-align: center;
+  color: #fff;
+}
+
+.history-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Roller Button */
+.roller-container {
+  text-align: center;
+  margin: 20px;
+}
+
+.roll-button {
+  padding: 15px 30px;
+  font-size: 18px;
+  background-color: #e74c3c;
+  color: white;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.roll-button:hover {
+  border: 2px solid white;
+}
+
+.roll-button:active {
+  background-color: #630800;
+}
+
+.roll-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
 }
